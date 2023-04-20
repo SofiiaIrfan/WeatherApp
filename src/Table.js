@@ -18,10 +18,10 @@ const Table = (props) => {
           const temperature = row.temperature;
           const conditions = row.conditions;
           return (
-            <tr className='table'>
-              <td>{date}</td>
-              <td>{temperature}</td>
-              <td>{conditions}</td>
+            <tr className='table column'>
+              <td >{date}</td>
+              <td >{temperature}</td>
+              <td >{conditions}</td>
             </tr>
           );
         })}

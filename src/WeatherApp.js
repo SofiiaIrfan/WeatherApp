@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles.css";
-// import { BiSearch, BiLoaderAlt } from "react-icons/bi";
-// import { AiOutlineEye, AiOutlineHeart } from "react-icons/ai";
-// import { CgDrop } from "react-icons/cg";
-// import { CiTempHigh } from "react-icons/ci";
-// import { WiStrongWind } from "react-icons/wi";
-// import {
-//     BsSunFill,
-//     BsCloudsFill,
-//     BsFillCloudRainHeavyFill,
-//     BsCloudFog2,
-//     BsSnow,
-// } from "react-icons/bs";
-// import { VscError } from "react-icons/vsc";
+import { BiSearch, BiLoaderAlt } from "react-icons/bi";
+import { MdFavoriteBorder} from "react-icons/md";
+import { CgDrop } from "react-icons/cg";
+import { CiTempHigh } from "react-icons/ci";
+import { WiStrongWind } from "react-icons/wi";
+import {
+    BsSunFill,
+    BsCloudsFill,
+    BsFillCloudRainHeavyFill,
+    BsCloudFog2,
+    BsSnow,
+} from "react-icons/bs";
+import { VscError } from "react-icons/vsc";
+
 
 import Table from "./Table";
 
@@ -48,7 +49,7 @@ const WeatherApp = (props) => {
   return (
     <>
       <fieldset className='table'>
-        <legend className='table'>Select weather interval:</legend>
+        <legend className='table'>SELECT WEATHER INTERVAL:</legend>
         <input
           type="radio"
           id={CURRENT}
@@ -81,16 +82,23 @@ const WeatherApp = (props) => {
 
         <div className='handleInput'>
         <input value={input} onChange={handleInput} className='input' />
-        <button onClick={fetchWeather} className='button'>REQUEST DATA</button>
+        <button onClick={fetchWeather} className='button'>Search</button>
         <div>&nbsp;</div>
         </div>
 
       <Table weatherData={weatherData[period]} />
+
+      <footer className="footer">
+                <p className="text-white mr-1">Made with </p>
+                <MdFavoriteBorder className="mr-1 text-red-400" />
+                <p className="text-white mr-1">by <a className="underline" href="https://github.com/SofiiaIrfan" target="_blank" rel="noopener noreferrer">Sofiia Irfan Pasha</a></p>
+            </footer>
     </>
+
   );
 
   function fetchWeather() {
-    // TODO: that function should be separate from the component
+    
     fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${input}&appid=${API_KEY}`
     ) // Promise
@@ -98,7 +106,7 @@ const WeatherApp = (props) => {
       .then((direct) => {
 
 
-        // TODO: that function can be flat
+      
         const data = direct[0];
         const lat = data.lat;
         const lon = data.lon;
