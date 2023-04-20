@@ -1,21 +1,8 @@
 import React, { useEffect, useState } from "react";
-import styles from "./styles.css";
-import { BiSearch, BiLoaderAlt } from "react-icons/bi";
-import { MdFavoriteBorder} from "react-icons/md";
-import { CgDrop } from "react-icons/cg";
-import { CiTempHigh } from "react-icons/ci";
-import { WiStrongWind } from "react-icons/wi";
-import {
-    BsSunFill,
-    BsCloudsFill,
-    BsFillCloudRainHeavyFill,
-    BsCloudFog2,
-    BsSnow,
-} from "react-icons/bs";
-import { VscError } from "react-icons/vsc";
-
+import { MdFavoriteBorder } from "react-icons/md";
 
 import Table from "./Table";
+import TablePlaceholder from './TablePlaceholder';
 
 const API_KEY = "cda6a15e090c3937b3727e2ebb36a1ed";
 
@@ -80,33 +67,37 @@ const WeatherApp = (props) => {
       </fieldset>
       <div>&nbsp;</div>
 
-        <div className='handleInput'>
+      <div className='handleInput'>
         <input value={input} onChange={handleInput} className='input' />
         <button onClick={fetchWeather} className='button'>Search</button>
         <div>&nbsp;</div>
-        </div>
+      </div>
 
-      <Table weatherData={weatherData[period]} />
+      {showErrorMessage ? <TablePlaceholder />
+      : <Table weatherData={weatherData[period]} />}
 
       <footer className="footer">
-                <p className="text-white mr-1">Made with </p>
-                <MdFavoriteBorder className="mr-1 text-red-400" />
-                <p className="text-white mr-1">by <a className="underline" href="https://github.com/SofiiaIrfan" target="_blank" rel="noopener noreferrer">Sofiia Irfan Pasha</a></p>
-            </footer>
+        <p className="text-white mr-1">Made with </p>
+        <MdFavoriteBorder className="mr-1 text-red-400" />
+        <p className="text-white mr-1">by <a className="underline" href="https://github.com/SofiiaIrfan" target="_blank" rel="noopener noreferrer">Sofiia Irfan Pasha</a></p>
+      </footer>
     </>
 
   );
 
   function fetchWeather() {
-    
     fetch(
       `https://api.openweathermap.org/geo/1.0/direct?q=${input}&appid=${API_KEY}`
     ) // Promise
       .then((response) => response.json()) // JSON
       .then((direct) => {
+        if (direct.length === 0) {
+          setShowErrorMessage(true);
+          return;
+        }
 
+        setShowErrorMessage(false);
 
-      
         const data = direct[0];
         const lat = data.lat;
         const lon = data.lon;

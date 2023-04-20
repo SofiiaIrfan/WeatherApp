@@ -1,4 +1,5 @@
 import styles from "./styles.css";
+
 const Table = (props) => {
   // [{date, temperature, conditions}, {date, temperature, conditions} ...]
   const weatherData = props.weatherData;
@@ -18,7 +19,7 @@ const Table = (props) => {
           const temperature = row.temperature;
           const conditions = row.conditions;
           return (
-            <tr className='table column'>
+            <tr className='table column' key={date}>
               <td >{date}</td>
               <td >{temperature}</td>
               <td >{conditions}</td>
