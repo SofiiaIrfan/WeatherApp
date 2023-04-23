@@ -18,10 +18,93 @@ body{
     padding: 40px;
     text-align: center;
 }
+@media screen and (max-width: 520px) {
+    .table {
+        display: flex;
+        /* align-items: center;
+        gap: 2%;
+        flex-direction: column;
+        text-align: center;
+        margin: auto; */
+
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .table {
+        /* display: block; */
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        flex-direction: column;
+        text-align: center;
+        margin: auto;
+        font-size: small;
+
+    }
+}
 
 .column{
     height: 50%;
     width: 80%;
+}
+
+@media screen and (max-width: 540px) {
+    .table .column{
+        color:rgb(35, 12, 75);
+        padding: 5px;
+        text-align: center;
+        justify-content: center;
+        font-size: x-small;
+        margin:auto;
+    }
+    .responsive-table{
+        
+
+    }
+
+    .th-column-responsive{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .th-responsive{
+        width: 30%;
+        margin: 5px;
+        font-size: smaller;
+        font: bold;
+    }
+    .td-column-responsive{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items:end;
+        font-size: 70%;
+        column-gap: 5px;
+
+    }
+    .td-responsive{
+        width: 45%;
+        margin: 5px;
+        font-size: smaller;
+        align-items: flex-start;
+
+    }
+    }
+
+
+
+@media screen and (max-width: 520px) {
+
+    tr{
+        height: fit-content;
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: auto;
+    }
 }
 
 .handleInput{
@@ -130,6 +213,12 @@ body{
    width:100%;
 }
 
+@media screen and (max-width: 520px) {
+    .footer {
+        visibility: hidden;
+
+    }
+}
 
   input[type='radio']{
     position: relative;
@@ -166,3 +255,77 @@ input[type='radio']:checked::after {
   transform: translate(-50%, -50%);
   visibility: visible;
 }
+
+@media screen and (max-width: 540px) {
+input[type='radio']{
+  position: row;
+  justify-content: center;
+  top: 20%;
+  left: 20%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(219, 192, 234);
+  transform: translate(-50%, -50%);
+  visibility: visible;
+  
+  /* margin-bottom: 5%; */
+
+}
+input[type='radio']::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid rgb(236, 171, 236);
+
+
+  }
+  input[type='radio']:checked::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+  left: 20%;
+  width: 10px;
+  height: 10px;
+    border-radius: 50%;
+    background-color: rgb(219, 192, 234);
+    transform: translate(-50%, -50%);
+    visibility: visible;
+    margin-right:auto;
+
+  }
+}
+
+label{
+    /* padding: 4vw; */
+    position: relative;
+    font-size: small;
+    margin: 20px;
+    
+}
+
+@media screen and (max-width: 540px) {
+fieldset{
+    display:inline-flex;
+    align-items: center;
+    gap: 5%;
+    text-align: center;
+    margin: 20px;
+
+}
+
+.footer {
+    visibility: hidden;
+
+}
+}
+
+/* legend{
+    position: relative;
+} */
