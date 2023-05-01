@@ -74,7 +74,7 @@ const WeatherApp = (props) => {
       </div>
 
       {showErrorMessage ? <TablePlaceholder />
-      : <Table weatherData={weatherData[period]} />}
+        : <Table weatherData={weatherData[period]} />}
 
       <footer className="footer">
         <p className="text-white mr-1">Made with </p>

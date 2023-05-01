@@ -1,5 +1,3 @@
-import styles from "./styles.css";
-
 const TablePlaceholder = () => {
   return (
     <table width="100%" border="1px">
