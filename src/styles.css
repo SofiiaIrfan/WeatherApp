@@ -10,20 +10,21 @@ body {
   text-align: center;
 }
 
-.table {
+.period_switcher {
   color: rgb(35, 12, 75);
   padding: 40px;
   text-align: center;
+  border-color: rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 520px) {
-  .table {
+  .period_switcher {
     display: flex;
   }
 }
 
 @media screen and (max-width: 540px) {
-  .table {
+  .period_switcher {
     justify-content: center;
     align-items: center;
     gap: 5px;
@@ -41,7 +42,7 @@ body {
 }
 
 @media screen and (max-width: 540px) {
-  .table .column {
+  .period_switcher .column {
     color: rgb(35, 12, 75);
     padding: 5px;
     text-align: center;
@@ -82,8 +83,6 @@ body {
 
   }
 }
-
-
 
 @media screen and (max-width: 520px) {
   tr {
@@ -310,4 +309,108 @@ label {
     visibility: hidden;
 
   }
+}
+
+ul {
+  list-style-type: none;
+}
+
+.table {
+  display: grid;
+  grid-gap: 0px;
+  grid-template-areas:
+    'date_title temp_title conditions_title'
+    'date_val temp_val conditions_val';
+  border: rgba(0, 0, 0, 0.3) groove 1px;
+  padding: 0px;
+}
+
+.date_title {
+  grid-area: date_title;
+}
+
+.temp_title {
+  grid-area: temp_title;
+}
+
+.conditions_title {
+  grid-area: conditions_title;
+}
+
+.date_val:nth-child(3n) {
+  grid-area: date_val;
+}
+
+.temp_val:nth-child(3n+1) {
+  grid-area: temp_val;
+}
+
+.conditions_val:nth-child(3n+2) {
+  grid-area: conditions_val;
+}
+
+.weather_table_cell {
+  margin: 0px;
+  font-size: smaller;
+  border: rgba(0, 0, 0, 0.3) groove 1px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+@media screen and (max-width: 500px) {
+  .table {
+    grid-template-areas:
+      'date_val'
+      'temp_val'
+      'conditions_val';
+  }
+
+  .weather_table_cell {
+    position: relative;
+    margin: 0px;
+    font-size: smaller;
+    border: rgba(0, 0, 0, 0.3) groove 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-left: 50%;
+  }
+
+  .date_title {
+    display: none;
+  }
+
+    
+  .temp_title {
+    display: none;
+  }
+
+  .conditions_title {
+    display: none;
+  }
+
+  .table_values_mob::before {
+    position: absolute;
+    width: 45%;
+    left: 0px;
+    border-right: rgba(0, 0, 0, 0.3) groove 2px;
+    text-align: left;
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
+  .date_val::before {
+    content: 'Date: ';
+  }
+
+  .temp_val::before {
+    content: 'Temperature: ';
+  }
+
+  .conditions_val::before {
+    content: 'Conditions: ';
+  }
+
 }

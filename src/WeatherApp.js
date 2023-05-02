@@ -10,6 +10,8 @@ const CURRENT = "current";
 const HOURS3 = "3hours";
 const DAYS5 = "5days";
 
+const TIME_FORMAT_OPTIONS = { hour: "2-digit", minute: "2-digit", hour12: false };
+
 const WeatherApp = (props) => {
   const [input, setInput] = useState("London");
   const [period, setPeriod] = useState("current");
@@ -35,8 +37,8 @@ const WeatherApp = (props) => {
 
   return (
     <>
-      <fieldset className='table'>
-        <legend className='table'>SELECT WEATHER INTERVAL:</legend>
+      <fieldset className='period_switcher'>
+        <legend className='period_switcher'>SELECT WEATHER INTERVAL:</legend>
         <input
           type="radio"
           id={CURRENT}
@@ -45,7 +47,7 @@ const WeatherApp = (props) => {
           checked={period === CURRENT}
           onChange={handleChangePeriod}
         />
-        <label htmlFor={CURRENT} className='table'>CURRENT</label>
+        <label htmlFor={CURRENT} className='period_switcher'>CURRENT</label>
         <input
           type="radio"
           id={HOURS3}
@@ -54,7 +56,7 @@ const WeatherApp = (props) => {
           checked={period === HOURS3}
           onChange={handleChangePeriod}
         />
-        <label htmlFor={HOURS3} className='table'>3 HOURS</label>
+        <label htmlFor={HOURS3} className='period_switcher'>3 HOURS</label>
         <input
           type="radio"
           id={DAYS5}
@@ -63,7 +65,7 @@ const WeatherApp = (props) => {
           checked={period === DAYS5}
           onChange={handleChangePeriod}
         />
-        <label htmlFor={DAYS5} className='table'>5 DAYS</label>
+        <label htmlFor={DAYS5} className='period_switcher'>5 DAYS</label>
       </fieldset>
       <div>&nbsp;</div>
 
@@ -110,7 +112,7 @@ const WeatherApp = (props) => {
 
             const currentDate = new Date(
               weather.current.dt * 1000
-            ).toUTCString();
+            ).toLocaleTimeString([], TIME_FORMAT_OPTIONS);
             const currentTemperature = weather.current.temp;
             const currentConditions = weather.current.weather[0].main;
             const currentWeatherData = [
@@ -124,7 +126,7 @@ const WeatherApp = (props) => {
 
             const hourlyArray = weather.hourly.slice(0, 3);
             const hourlyWeatherData = hourlyArray.map((hour) => {
-              const date = new Date(hour.dt * 1000).toUTCString();
+              const date = new Date(hour.dt * 1000).toLocaleTimeString([], TIME_FORMAT_OPTIONS);
               const temperature = hour.temp;
               const conditions = hour.weather[0].main;
               return { date, temperature, conditions };
@@ -133,7 +135,7 @@ const WeatherApp = (props) => {
 
             const dailyArray = weather.daily.slice(0, 5);
             const dailyWeatherData = dailyArray.map((day) => {
-              const date = new Date(day.dt * 1000).toUTCString();
+              const date = new Date(day.dt * 1000).toDateString();
               const temperature = day.temp.day;
               const conditions = day.weather[0].main;
               return { date, temperature, conditions };
