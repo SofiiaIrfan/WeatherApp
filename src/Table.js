@@ -3,7 +3,7 @@ const Table = (props) => {
   const weatherData = props.weatherData;
   return (
     <ul width="100%" border="1px" className='table'>
-      <li className='weather_table_cell bold date_title'>Date</li>
+      <li className='weather_table_cell bold date_title'>Date/Time</li>
       <li className='weather_table_cell bold temp_title'>Temperature</li>
       <li className='weather_table_cell bold conditions_title'>Conditions</li>
       {weatherData.map((row) => {

@@ -317,7 +317,6 @@ ul {
 
 .table {
   display: grid;
-  grid-gap: 0px;
   grid-template-areas:
     'date_title temp_title conditions_title'
     'date_val temp_val conditions_val';
@@ -402,7 +401,7 @@ ul {
   }
 
   .date_val::before {
-    content: 'Date: ';
+    content: 'Date/Time: ';
   }
 
   .temp_val::before {
