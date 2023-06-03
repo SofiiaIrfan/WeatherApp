@@ -38,34 +38,43 @@ const WeatherApp = (props) => {
   return (
     <>
       <fieldset className='period_switcher'>
-        <legend className='period_switcher'>SELECT WEATHER INTERVAL:</legend>
-        <input
-          type="radio"
-          id={CURRENT}
-          name="period"
-          value={CURRENT}
-          checked={period === CURRENT}
-          onChange={handleChangePeriod}
-        />
-        <label htmlFor={CURRENT} className='period_switcher'>CURRENT</label>
-        <input
-          type="radio"
-          id={HOURS3}
-          name="period"
-          value={HOURS3}
-          checked={period === HOURS3}
-          onChange={handleChangePeriod}
-        />
-        <label htmlFor={HOURS3} className='period_switcher'>3 HOURS</label>
-        <input
-          type="radio"
-          id={DAYS5}
-          name="period"
-          value={DAYS5}
-          checked={period === DAYS5}
-          onChange={handleChangePeriod}
-        />
-        <label htmlFor={DAYS5} className='period_switcher'>5 DAYS</label>
+        <legend>SELECT WEATHER INTERVAL:</legend>
+        <div className=' period_switcher-container'>
+          <input
+            type="radio"
+            id={CURRENT}
+            name="period"
+            value={CURRENT}
+            checked={period === CURRENT}
+            onChange={handleChangePeriod}
+            className='period_switcher-radio'
+          />
+          <label htmlFor={CURRENT}>CURRENT</label>
+        </div>
+        <div className='period_switcher-container'>
+          <input
+            type="radio"
+            id={HOURS3}
+            name="period"
+            value={HOURS3}
+            checked={period === HOURS3}
+            onChange={handleChangePeriod}
+            className='period_switcher-radio'
+          />
+          <label htmlFor={HOURS3}>3 HOURS</label>
+        </div>
+        <div className='period_switcher-container'>
+          <input
+            type="radio"
+            id={DAYS5}
+            name="period"
+            value={DAYS5}
+            checked={period === DAYS5}
+            onChange={handleChangePeriod}
+            className='period_switcher-radio'
+          />
+          <label htmlFor={DAYS5}>5 DAYS</label>
+        </div>
       </fieldset>
       <div>&nbsp;</div>
 
